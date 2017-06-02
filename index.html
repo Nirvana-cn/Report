@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习总结</title>
+    <script src="jquery-1.11.3.js"></script>
+    <link type="text/css" rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+    <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        body{background: url(image/bg.jpg) repeat}
+        #contain{width:600px;height:300px;margin:50px auto;padding:15px;border:1px solid #000;background: #ddd;}
+        #contain div{float:left;}
+        #left{width:250px;height:300px;border-right:1px solid #000;}
+        #right{margin-left:30px;width:300px;height:300px;text-align: center;}
+        .btn{width:200px;text-align: center;margin:10px 20px;}
+        #out{display: none;position: absolute;width:100%;height:100%;top:0;left:0;background:rgba(221,221,221,0.5);text-align: center;}
+        #d1{width:800px;height:600px;background:#fff;margin:50px auto;padding-top:30px;}
+    </style>
+</head>
+<body>
+<div id="contain">
+    <div id="left">
+        <input type="button" value="播放系数" class="btn" onclick="show1()"><br>
+        <input type="button" value="挖掘社交媒体标签" class="btn" onclick="show2()"><br>
+        <input type="button" value="寻找最近邻的新方法" class="btn" onclick="show3()">
+        <input type="button" value="隐含狄利克雷分布" class="btn" onclick="show4()"><br>
+        <input type="button" value="个人建议" class="btn" onclick="show5()"><br>
+    </div>
+    <div id="right">
+        <img src="image/0.png" id="img">
+    </div>
+</div>
+<div id="out">
+    <div id="d1" class="in">
+        <img src="#" id="pic">
+    </div>
+    <input type="button" id="previous" class="btn2" value="Previous">
+    <input type="button" id="next" class="btn2" value="Next">
+    <input type="button" id="return" class="btn2" value="Return">
+</div>
+</body>
+<script>
+    var i=1,j=1,n;
+    $(".btn").button();
+    $(".btn2").button();
+    $("#img").click(function () {
+        $("#out").css("display","block");
+    });
+    $("#return").click(function () {
+        $("#out").css("display","none");
+        j=1;
+    });
+    $("#previous").click(function () {
+        if(j>1){
+            j--;
+            $("#pic").attr("src","image/"+i+"_"+j+".png");
+        }
+    });
+    $("#next").click(function () {
+        if(j<n){
+            j++;
+            $("#pic").attr("src","image/"+i+"_"+j+".png")
+        }
+    });
+
+    function show1() {
+        i = 1;
+        n = 3;
+        $("#img").attr("src","image/1.png");
+        $("#pic").attr("src","image/"+i+"_1.png")
+    }
+
+    function show2() {
+        i = 2;
+        n = 4;
+        $("#img").attr("src","image/2s.png");
+        $("#pic").attr("src","image/"+i+"_1.png")
+    }
+
+    function show3() {
+        i = 3;
+        n = 7;
+        $("#img").attr("src","image/3s.png");
+        $("#pic").attr("src","image/"+i+"_1.png")
+    }
+
+    function show4() {
+        i = 4;
+        n = 3;
+        $("#img").attr("src","image/4s.png");
+        $("#pic").attr("src","image/"+i+"_1.png")
+    }
+
+    function show5() {
+        $("#img").attr("src","image/5.png").unbind().click(function () {
+            window.open("https://scholar.google.com/citations?user=U3OKJgsAAAAJ&hl=zh-CN");
+        })
+    }
+</script>
+</html>
